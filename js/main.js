@@ -8,6 +8,8 @@ function getRandom (min, max) {
   return false;
 }
 
+getRandom(0, 10);
+
 function isValidLength (string, maxLength) {
   if (string.length >= maxLength) {
     return true;
@@ -15,3 +17,4 @@ function isValidLength (string, maxLength) {
   return false;
 }
 
+isValidLength('Тестовый текст', 10);
