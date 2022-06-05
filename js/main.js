@@ -87,7 +87,7 @@ const createComment = () => {
 };
 
 const createPhoto = () => {
-  const idPhoto = getIdPhoto();
+  idPhoto = getIdPhoto();
   commentsCount = getRandomPositiveInteger(1, MAX_COUNT_COMMENTS);
   const simularComments = Array.from({length: commentsCount}, createComment);
   return {
