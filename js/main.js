@@ -88,7 +88,7 @@ const createComment = () => {
 
 const createPhoto = () => {
   idPhoto = getIdPhoto();
-  commentsCount = getRandomPositiveInteger(1, MAX_COUNT_COMMENTS);
+  const commentsCount = getRandomPositiveInteger(1, MAX_COUNT_COMMENTS);
   const simularComments = Array.from({length: commentsCount}, createComment);
   return {
     id: idPhoto, // число — идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться.
