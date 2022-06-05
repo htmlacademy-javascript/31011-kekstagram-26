@@ -11,6 +11,8 @@ function checkStringLength (string, length) {
   return string.length <= length;
 }
 
+checkStringLength ("текст", 140);
+
 const DESCRIPTION = [
   'Мой отдых!',
   'В поезде.',
