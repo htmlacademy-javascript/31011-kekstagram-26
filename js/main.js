@@ -101,4 +101,3 @@ const createPhoto = () => {
 
 const simularPhotos = Array.from({length: SIMULAR_PHOTOS_COUNT}, createPhoto);
 
-console.log(simularPhotos);
