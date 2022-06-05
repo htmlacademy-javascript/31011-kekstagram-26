@@ -11,7 +11,7 @@ function checkStringLength (string, length) {
   return string.length <= length;
 }
 
-checkStringLength ("текст", 140);
+checkStringLength ('текст', 140);
 
 const DESCRIPTION = [
   'Мой отдых!',
@@ -53,19 +53,20 @@ const MAX_COUNT_MESSAGES = 2;
 
 const getRandomArrayElement = (elements) => {
   return elements[getRandomPositiveInteger(0, elements.length - 1)];
-}
+};
+
 let idPhoto = 0;
 let idComment = 0;
 
 const getIdPhoto = () => {
   idPhoto++;
   return idPhoto;
-}
+};
 
 const getIdComment = () => {
   idComment++;
   return idComment;
-}
+};
 
 const createMessageComment = () => {
   const MESSAGE_COUNT = getRandomPositiveInteger(1, MAX_COUNT_MESSAGES);
@@ -74,7 +75,7 @@ const createMessageComment = () => {
     message = message + ' ' + getRandomArrayElement(MESSAGES);
   }
   return message;
-}
+};
 
 const createComment = () => {
   return {
@@ -82,16 +83,16 @@ const createComment = () => {
     avatar: 'img/avatar-' + getRandomPositiveInteger(1, 6) + '.svg',
     messages: createMessageComment(),
     name: getRandomArrayElement(NAMES),
-  }
-}
+  };
+};
 
 const createPhoto = () => {
-  id = getIdPhoto();
+  const idPhoto = getIdPhoto();
   commentsCount = getRandomPositiveInteger(1, MAX_COUNT_COMMENTS);
   const simularComments = Array.from({length: commentsCount}, createComment);
   return {
-    id: id, // число — идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться.
-    url: 'photos/' + id + '.jpg', // строка — адрес картинки вида photos/{{i}}.jpg, где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
+    id: idPhoto, // число — идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться.
+    url: 'photos/' + idPhoto + '.jpg', // строка — адрес картинки вида photos/{{i}}.jpg, где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
     description: getRandomArrayElement(DESCRIPTION),
     likes: getRandomPositiveInteger(15, 200),
     comments: simularComments,
@@ -99,3 +100,5 @@ const createPhoto = () => {
 };
 
 const simularPhotos = Array.from({length: SIMULAR_PHOTOS_COUNT}, createPhoto);
+
+console.log(simularPhotos);
