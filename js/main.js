@@ -13,7 +13,7 @@ function checkStringLength (string, length) {
 
 checkStringLength ('текст', 140);
 
-const DESCRIPTION = [
+const DESCRIPTIONS = [
   'Мой отдых!',
   'В поезде.',
   'На море!',
@@ -48,56 +48,44 @@ const NAMES = [
 ];
 
 const SIMULAR_PHOTOS_COUNT = 25;
-const MAX_COUNT_COMMENTS = 6;
-const MAX_COUNT_MESSAGES = 2;
+const COMMENTS_MAX_COUNT = 6;
+const MESSAGES_MAX_COUNT = 2;
 
-const getRandomArrayElement = (elements) => {
-  return elements[getRandomPositiveInteger(0, elements.length - 1)];
-};
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-let idPhoto = 0;
-let idComment = 0;
+let photoId = 0;
+let commentId = 0;
 
-const getIdPhoto = () => {
-  idPhoto++;
-  return idPhoto;
-};
-
-const getIdComment = () => {
-  idComment++;
-  return idComment;
-};
-
-const createMessageComment = () => {
-  const MESSAGE_COUNT = getRandomPositiveInteger(1, MAX_COUNT_MESSAGES);
+const createCommentMessage = () => {
+  const messageCount = getRandomPositiveInteger(1, MESSAGES_MAX_COUNT);
   let message = '';
-  for (let i = 1; i <= MESSAGE_COUNT; i++){
-    message = message + ' ' + getRandomArrayElement(MESSAGES);
+  for (let i = 0; i < messageCount; i++){
+    message = `${message} ${getRandomArrayElement(MESSAGES)}`;
   }
   return message;
 };
 
 const createComment = () => {
+  commentId++;
   return {
-    id: getIdComment(),
-    avatar: 'img/avatar-' + getRandomPositiveInteger(1, 6) + '.svg',
-    messages: createMessageComment(),
+    id: commentId,
+    avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
+    messages: createCommentMessage(),
     name: getRandomArrayElement(NAMES),
   };
 };
 
 const createPhoto = () => {
-  idPhoto = getIdPhoto();
-  const commentsCount = getRandomPositiveInteger(1, MAX_COUNT_COMMENTS);
-  const simularComments = Array.from({length: commentsCount}, createComment);
+  photoId++;
+  const commentsCount = getRandomPositiveInteger(1, COMMENTS_MAX_COUNT);
+  const comments = Array.from({length: commentsCount}, createComment);
   return {
-    id: idPhoto, // число — идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться.
-    url: 'photos/' + idPhoto + '.jpg', // строка — адрес картинки вида photos/{{i}}.jpg, где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
-    description: getRandomArrayElement(DESCRIPTION),
+    id: photoId,
+    url: `photos/${photoId}.jpg`,
+    description: getRandomArrayElement(DESCRIPTIONS),
     likes: getRandomPositiveInteger(15, 200),
-    comments: simularComments,
+    comments: comments,
   };
 };
 
-const simularPhotos = Array.from({length: SIMULAR_PHOTOS_COUNT}, createPhoto);
-
+const photos = Array.from({length: SIMULAR_PHOTOS_COUNT}, createPhoto);
