@@ -47,11 +47,12 @@ const NAMES = [
   'Евгений',
 ];
 
-const SIMULAR_PHOTOS_COUNT = 25;
+const PHOTOS_MAX_COUNT = 25;
 const COMMENTS_MAX_COUNT = 6;
 const MESSAGES_MAX_COUNT = 2;
 
-const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
+const getRandomArrayElement = (elements) =>
+  elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 let photoId = 0;
 let commentId = 0;
@@ -88,4 +89,4 @@ const createPhoto = () => {
   };
 };
 
-Array.from({length: SIMULAR_PHOTOS_COUNT}, createPhoto); //const photos
+Array.from({length: PHOTOS_MAX_COUNT}, createPhoto); //const photos
