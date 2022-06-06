@@ -89,3 +89,5 @@ const createPhoto = () => {
 };
 
 const photos = Array.from({length: SIMULAR_PHOTOS_COUNT}, createPhoto);
+
+console.log(photos);
