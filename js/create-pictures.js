@@ -11,7 +11,6 @@ function createPictures() {
 
   photosData.forEach((photo) => {
     const photoElement = photoTemplate.cloneNode(true);
-    photoElement.querySelector('a').id = `photo-${  photo.id}`;
     photoElement.querySelector('.picture__img').src = photo.url;
     photoElement.querySelector('.picture__likes').textContent = photo.likes;
     photoElement.querySelector('.picture__comments').textContent = photo.comments.length;
