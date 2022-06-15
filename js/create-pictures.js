@@ -18,7 +18,7 @@ function createPictures() {
   photosContainer.append(photoListFragment);
   const previews = photosContainer.querySelectorAll('.picture');
 
-  function clickHandler(item, dataPicture) {
+  function initBigPicture(item, dataPicture) {
     item.addEventListener('click', () => {
       const bigPictureContainer = document.querySelector('.big-picture');
       const body = document.querySelector('body');
@@ -29,7 +29,7 @@ function createPictures() {
   }
 
   for (let i = 0; i < photosData.length; i++) {
-    clickHandler(previews[i], photosData[i]);
+    initBigPicture(previews[i], photosData[i]);
   }
 }
 
