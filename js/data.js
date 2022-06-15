@@ -38,22 +38,23 @@ const PHOTOS_MAX_COUNT = 25;
 const COMMENTS_MAX_COUNT = 6;
 const MESSAGES_MAX_COUNT = 2;
 
-const getRandomArrayElement = (elements) =>
-  elements[getRandomPositiveInteger(0, elements.length - 1)];
+function getRandomArrayElement(elements) {
+  return elements[getRandomPositiveInteger(0, elements.length - 1)];
+}
 
 let photoId = 0;
 let commentId = 0;
 
-const createCommentMessage = () => {
+function createCommentMessage() {
   const messageCount = getRandomPositiveInteger(1, MESSAGES_MAX_COUNT);
   let message = '';
   for (let i = 0; i < messageCount; i++){
     message = `${message} ${getRandomArrayElement(MESSAGES)}`;
   }
   return message;
-};
+}
 
-const createComment = () => {
+function createComment() {
   commentId++;
   return {
     id: commentId,
@@ -61,9 +62,9 @@ const createComment = () => {
     messages: createCommentMessage(),
     name: getRandomArrayElement(NAMES),
   };
-};
+}
 
-const createPhoto = () => {
+function createPhoto() {
   photoId++;
   const commentsCount = getRandomPositiveInteger(1, COMMENTS_MAX_COUNT);
   const comments = Array.from({length: commentsCount}, createComment);
@@ -74,7 +75,7 @@ const createPhoto = () => {
     likes: getRandomPositiveInteger(15, 200),
     comments: comments,
   };
-};
+}
 
 function getPhotos() {
   return Array.from({length: PHOTOS_MAX_COUNT}, createPhoto);
