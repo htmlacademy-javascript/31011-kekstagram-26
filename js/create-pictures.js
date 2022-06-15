@@ -4,9 +4,7 @@ import {createBigPicture} from './create-big-picture.js';
 function createPictures() {
   const photoTemplate = document.querySelector('#picture').content;
   const photosContainer = document.querySelector('.pictures');
-
   const photosData = getPhotos();
-
   const photoListFragment = document.createDocumentFragment();
 
   photosData.forEach((photo) => {
@@ -18,23 +16,20 @@ function createPictures() {
   });
 
   photosContainer.append(photoListFragment);
-
-  const preview = photosContainer.querySelectorAll('.picture');
+  const previews = photosContainer.querySelectorAll('.picture');
 
   function clickHandler(item, dataPicture) {
     item.addEventListener('click', () => {
       const bigPictureContainer = document.querySelector('.big-picture');
       const body = document.querySelector('body');
-
       bigPictureContainer.classList.remove('hidden');
       body.classList.add('modal-open');
-
       createBigPicture(dataPicture);
     });
   }
 
   for (let i = 0; i < photosData.length; i++) {
-    clickHandler(preview[i], photosData[i]);
+    clickHandler(previews[i], photosData[i]);
   }
 }
 
