@@ -14,6 +14,7 @@ photosData.forEach((photo) => {
   photoElement.querySelector('.picture__comments').textContent = photo.comments.length;
   photoListFragment.append(photoElement);
 });
+
 function createPictures() {
   photosContainer.append(photoListFragment);
 }
