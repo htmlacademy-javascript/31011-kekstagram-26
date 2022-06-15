@@ -1,7 +1,7 @@
 import {getPhotos} from './data.js';
 
 const photoTemplate = document.querySelector('#picture').content;
-const conteinerPhotos = document.querySelector('.pictures');
+const photosContainer = document.querySelector('.pictures');
 
 const photosData = getPhotos();
 
@@ -14,4 +14,8 @@ photosData.forEach((photo) => {
   photoElement.querySelector('.picture__comments').textContent = photo.comments.length;
   photoListFragment.append(photoElement);
 });
-conteinerPhotos.append(photoListFragment);
+function createPictures() {
+  photosContainer.append(photoListFragment);
+}
+
+export {createPictures};

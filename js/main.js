@@ -1,1 +1,3 @@
-import './create-picture';
+import {createPictures} from './create-pictures';
+
+createPictures();
