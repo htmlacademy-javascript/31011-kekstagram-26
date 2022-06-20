@@ -1,5 +1,5 @@
 import {getPhotos} from './data.js';
-import {createBigPicture} from './create-big-picture.js';
+import {openBigPicture} from './popap-big-picture.js';
 
 function createPictures() {
   const photoTemplate = document.querySelector('#picture').content;
@@ -20,11 +20,7 @@ function createPictures() {
 
   function initBigPicture(item, dataPicture) {
     item.addEventListener('click', () => {
-      const bigPictureContainer = document.querySelector('.big-picture');
-      const body = document.querySelector('body');
-      bigPictureContainer.classList.remove('hidden');
-      body.classList.add('modal-open');
-      createBigPicture(dataPicture);
+      openBigPicture(dataPicture);
     });
   }
 
