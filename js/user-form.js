@@ -4,7 +4,7 @@ const form = document.querySelector('#upload-select-image');
 const inputHashtags = form.querySelector('.text__hashtags');
 const inputComment = form.querySelector('.text__description');
 
-const HASHTAG_VALID_REGEX = /^#[A-Za-zА-Яа-я0-9]{1,19}$/;
+const HASHTAG_VALID_REGEX = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
 const MAX_HASHTAGS = 5;
 const MIN_HASHTAG_LENGTH = 2;
 const MAX_HASHTAG_LENGTH = 20;
