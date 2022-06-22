@@ -7,8 +7,16 @@ function getRandomPositiveInteger (a, b) {
   return Math.floor(result);
 }
 
-function checkStringLength (string, length) {
-  return string.length <= length;
+function checkStringLength (string, maxLength, minLength = 0) {
+  return (string.length <= maxLength && string.length >= minLength);
 }
 
-export {getRandomPositiveInteger, checkStringLength};
+function isEscapeKey(evt) {
+  return evt.key === 'Escape';
+}
+
+function isNotDuplicates(items) {
+  return !(items.some((item) => items.indexOf(item) !== items.lastIndexOf(item)));
+}
+
+export {getRandomPositiveInteger, checkStringLength, isEscapeKey, isNotDuplicates};
