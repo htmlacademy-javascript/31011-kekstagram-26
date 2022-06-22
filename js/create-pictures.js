@@ -1,5 +1,5 @@
 import {getPhotos} from './data.js';
-import {openBigPicture} from './popap-big-picture.js';
+import {openBigPicture} from './popup-big-picture.js';
 
 function createPictures() {
   const photoTemplate = document.querySelector('#picture').content;

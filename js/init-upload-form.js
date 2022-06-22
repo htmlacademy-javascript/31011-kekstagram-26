@@ -1,7 +1,6 @@
 import {isEscapeKey} from './util.js';
-import './user-form.js';
 
-function workForm() {
+function initUploadForm() {
   const inputUploadFile = document.querySelector('#upload-file');
   const editPhotoConteiner = document.querySelector('.img-upload__overlay');
   const buttonCloseEditPicture = editPhotoConteiner.querySelector('#upload-cancel');
@@ -42,4 +41,4 @@ function workForm() {
   changePicture();
 }
 
-export {workForm};
+export {initUploadForm};
