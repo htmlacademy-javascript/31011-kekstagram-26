@@ -3,8 +3,6 @@ import {createComments} from './create-comments.js';
 import {isEscapeKey} from './util.js';
 
 const bigPictureContainer = document.querySelector('.big-picture');
-const commentCountContainer = bigPictureContainer.querySelector('.social__comment-count');
-const commentLoaderContainer = bigPictureContainer.querySelector('.comments-loader');
 const buttonCloseBigPicture = bigPictureContainer.querySelector('#picture-cancel');
 const body = document.querySelector('body');
 
@@ -28,8 +26,6 @@ function openBigPicture(dataPicture) {
   buttonCloseBigPicture.addEventListener('click', () => {
     closeBigPicture();
   });
-  commentCountContainer.classList.add('hidden');
-  commentLoaderContainer.classList.add('hidden');
 
   createBigPicture(dataPicture);
   createComments(dataPicture['comments']);
