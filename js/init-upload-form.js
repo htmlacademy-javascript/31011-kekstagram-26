@@ -10,14 +10,14 @@ function initUploadForm() {
     inputUploadFile.addEventListener('change', () => {
       editPhotoConteiner.classList.remove('hidden');
       body.classList.add('modal-open');
-      document.addEventListener('keydown', onPopapEscKeyDown);
+      document.addEventListener('keydown', onPopupEscKeyDown);
       buttonCloseEditPicture.addEventListener('click', () => {
         closeEditPicture();
       });
     });
   }
 
-  function onPopapEscKeyDown(evt) {
+  function onPopupEscKeyDown(evt) {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
       closeEditPicture();
@@ -31,7 +31,7 @@ function initUploadForm() {
 
     editPhotoConteiner.classList.add('hidden');
     body.classList.remove('modal-open');
-    document.removeEventListener('keydown', onPopapEscKeyDown);
+    document.removeEventListener('keydown', onPopupEscKeyDown);
     inputUploadFile.value = '';
     scaleControl.value = '55%';
     hashtagsInput.value = '';
