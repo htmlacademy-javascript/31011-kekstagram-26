@@ -2,7 +2,7 @@ function scalePicture() {
   const controlSmaller = document.querySelector('.scale__control--smaller');
   const controlBigger = document.querySelector('.scale__control--bigger');
   let controlValue = document.querySelector('.scale__control--value');
-  const uploadPicture = document.querySelector('.img-upload__preview');
+  const uploadPicture = document.querySelector('.img-upload__preview img');
 
   controlValue.value = '100%';
 
