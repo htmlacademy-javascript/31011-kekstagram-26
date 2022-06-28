@@ -1,11 +1,11 @@
-function effectPicture() {
+function initEffectPicture() {
   const sliderEffect = document.querySelector('.effect-level__slider');
-  const sliderEffectContainet = document.querySelector('.img-upload__effect-level');
+  const sliderEffectContainer = document.querySelector('.img-upload__effect-level');
   const selectButtons = document.querySelectorAll('.effects__radio');
   const uploadPicture = document.querySelector('.img-upload__preview img');
   const levelEffect = document.querySelector('.effect-level__value');
 
-  sliderEffectContainet.classList.add('hidden');
+  sliderEffectContainer.classList.add('hidden');
 
   noUiSlider.create(sliderEffect, {
     range: {
@@ -21,12 +21,16 @@ function effectPicture() {
     selectButton.addEventListener('change', () => {
       if (selectButton.checked) {
         if (selectButton.value !== 'none') {
-          sliderEffectContainet.classList.remove('hidden');
+          sliderEffectContainer.classList.remove('hidden');
         } else {
-          sliderEffectContainet.classList.add('hidden');
+          sliderEffectContainer.classList.add('hidden');
         }
         switch(selectButton.value) {
           case 'chrome': {
+            sliderEffect.noUiSlider.on('update', () => {
+              levelEffect.value = sliderEffect.noUiSlider.get();
+              uploadPicture.style.filter = `grayscale(${levelEffect.value})`;
+            });
             sliderEffect.noUiSlider.updateOptions({
               range: {
                 min: 0,
@@ -34,16 +38,16 @@ function effectPicture() {
               },
               step: 0.1,
               start: 1,
-            });
-            sliderEffect.noUiSlider.on('update', () => {
-              levelEffect.value = sliderEffect.noUiSlider.get();
-              uploadPicture.style.filter = `grayscale(${levelEffect.value})`;
             });
             uploadPicture.classList='';
             uploadPicture.classList.add('effects__preview--chrome');
           }
             break;
           case 'sepia': {
+            sliderEffect.noUiSlider.on('update', () => {
+              levelEffect.value = sliderEffect.noUiSlider.get();
+              uploadPicture.style.filter = `sepia(${levelEffect.value})`;
+            });
             sliderEffect.noUiSlider.updateOptions({
               range: {
                 min: 0,
@@ -52,15 +56,15 @@ function effectPicture() {
               step: 0.1,
               start: 1,
             });
-            sliderEffect.noUiSlider.on('update', () => {
-              levelEffect.value = sliderEffect.noUiSlider.get();
-              uploadPicture.style.filter = `sepia(${levelEffect.value})`;
-            });
             uploadPicture.classList='';
             uploadPicture.classList.add('effects__preview--sepia');
           }
             break;
           case 'marvin': {
+            sliderEffect.noUiSlider.on('update', () => {
+              levelEffect.value = sliderEffect.noUiSlider.get();
+              uploadPicture.style.filter = `invert(${levelEffect.value}%)`;
+            });
             sliderEffect.noUiSlider.updateOptions({
               range: {
                 min: 0,
@@ -69,15 +73,15 @@ function effectPicture() {
               step: 1,
               start: 100,
             });
-            sliderEffect.noUiSlider.on('update', () => {
-              levelEffect.value = sliderEffect.noUiSlider.get();
-              uploadPicture.style.filter = `invert(${levelEffect.value}%)`;
-            });
             uploadPicture.classList='';
             uploadPicture.classList.add('effects__preview--invert');
           }
             break;
           case 'phobos': {
+            sliderEffect.noUiSlider.on('update', () => {
+              levelEffect.value = sliderEffect.noUiSlider.get();
+              uploadPicture.style.filter = `blur(${levelEffect.value}px)`;
+            });
             sliderEffect.noUiSlider.updateOptions({
               range: {
                 min: 0,
@@ -86,15 +90,15 @@ function effectPicture() {
               step: 0.1,
               start: 3,
             });
-            sliderEffect.noUiSlider.on('update', () => {
-              levelEffect.value = sliderEffect.noUiSlider.get();
-              uploadPicture.style.filter = `blur(${levelEffect.value}px)`;
-            });
             uploadPicture.classList='';
             uploadPicture.classList.add('effects__preview--blur');
           }
             break;
           case 'heat': {
+            sliderEffect.noUiSlider.on('update', () => {
+              levelEffect.value = sliderEffect.noUiSlider.get();
+              uploadPicture.style.filter = `brightness(${levelEffect.value})`;
+            });
             sliderEffect.noUiSlider.updateOptions({
               range: {
                 min: 1,
@@ -102,10 +106,6 @@ function effectPicture() {
               },
               step: 0.1,
               start: 3,
-            });
-            sliderEffect.noUiSlider.on('update', () => {
-              levelEffect.value = sliderEffect.noUiSlider.get();
-              uploadPicture.style.filter = `brightness(${levelEffect.value})`;
             });
             uploadPicture.classList='';
             uploadPicture.classList.add('effects__preview--brightness');
@@ -122,4 +122,4 @@ function effectPicture() {
 
 }
 
-export {effectPicture};
+export {initEffectPicture};

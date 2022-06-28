@@ -1,13 +1,12 @@
-function scalePicture() {
+function initScalePicture() {
   const controlSmaller = document.querySelector('.scale__control--smaller');
   const controlBigger = document.querySelector('.scale__control--bigger');
-  let controlValue = document.querySelector('.scale__control--value');
+  const controlValue = document.querySelector('.scale__control--value');
   const uploadPicture = document.querySelector('.img-upload__preview img');
 
   controlValue.value = '100%';
 
   function clickControlSmaller() {
-    controlValue = document.querySelector('.scale__control--value');
     switch (controlValue.value) {
       case '100%': {
         controlValue.value = '75%';
@@ -28,7 +27,6 @@ function scalePicture() {
   }
 
   function clickControlBigger() {
-    controlValue = document.querySelector('.scale__control--value');
     switch (controlValue.value) {
       case '25%': {
         controlValue.value = '50%';
@@ -54,4 +52,4 @@ function scalePicture() {
 
 }
 
-export {scalePicture};
+export {initScalePicture};
