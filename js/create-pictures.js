@@ -1,10 +1,10 @@
-import {getPhotos} from './data.js';
+//import {getPhotos} from './data.js';
 import {openBigPicture} from './popup-big-picture.js';
 
-function createPictures() {
+function createPictures(photosData) {
   const photoTemplate = document.querySelector('#picture').content;
   const photosContainer = document.querySelector('.pictures');
-  const photosData = getPhotos();
+  //const photosData = getPhotos();
   const photoListFragment = document.createDocumentFragment();
 
   photosData.forEach((photo) => {
