@@ -1,11 +1,12 @@
 import {createPictures} from './create-pictures.js';
-import {initUploadForm} from './init-upload-form.js';
-import {initUploadFormValidation} from './validate-upload-form.js';
+import {initUploadForm, closeEditPicture} from './init-upload-form.js';
+import {setUserFormSubmit} from './validate-upload-form.js';
 import {initScalePicture} from './init-scale-picture.js';
 import {initEffectPicture} from './init-effect-picture.js';
+import {getData} from './api.js';
 
-createPictures();
+getData(createPictures);
 initUploadForm();
-initUploadFormValidation();
+setUserFormSubmit(closeEditPicture);
 initScalePicture();
 initEffectPicture();

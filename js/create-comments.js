@@ -6,7 +6,7 @@ function createComments(dataComments) {
   const bigPictureContainer = document.querySelector('.big-picture');
   const bigPictureComments = bigPictureContainer.querySelector('.comments-count');
   const commentViewContainer = bigPictureContainer.querySelector('.comments-view');
-  const viewDataComments = dataComments.slice(0, countViewComments);
+  const viewDataComments = dataComments.slice(0, COUNT_VIEW_COMMENTS);
   const commentLoaderContainer = bigPictureContainer.querySelector('.comments-loader');
   const allCommentsCount = dataComments.length;
   commentsContainer.innerHTML = '';
@@ -27,7 +27,7 @@ function createComments(dataComments) {
       const commentMesssage = commentElement.querySelector('.social__comment .social__text');
       commentAvatar.src = comment.avatar;
       commentAvatar.alt = comment.name;
-      commentMesssage.textContent = comment.messages;
+      commentMesssage.textContent = comment.message;
       commentListFragment.append(commentElement);
     });
     commentsContainer.append(commentListFragment);
