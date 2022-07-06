@@ -72,6 +72,15 @@ function showErrorMessage() {
   });
 }
 
+function shuffle(array) {
+  const copyArray = array.slice();
+  for (let i = copyArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copyArray[i], copyArray[j]] = [copyArray[j], copyArray[i]];
+  }
+  return copyArray;
+}
+
 // Функция взята из интернета и доработана
 // Источник - https://www.freecodecamp.org/news/javascript-debounce-example
 
@@ -117,4 +126,4 @@ function throttle (callback, delayBetweenFrames) {
   };
 }
 
-export {getRandomPositiveInteger, checkStringLength, isEscapeKey, isNotDuplicates, showSuccessMessage, showErrorMessage, debounce, throttle};
+export {getRandomPositiveInteger, checkStringLength, isEscapeKey, isNotDuplicates, showSuccessMessage, showErrorMessage, shuffle, debounce, throttle};
