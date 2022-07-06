@@ -1,13 +1,11 @@
 import {openBigPicture} from './popup-big-picture.js';
 
-function createPictures(photosData, filterPhotos) {
+function createPictures(photosData) {
   const photoTemplate = document.querySelector('#picture').content;
   const photosContainer = document.querySelector('.pictures');
   const photoListFragment = document.createDocumentFragment();
 
-  const photosDataFiltred = filterPhotos(photosData.slice());
-
-  photosDataFiltred.forEach((photo) => {
+  photosData.forEach((photo) => {
     const photoElement = photoTemplate.cloneNode(true);
     photoElement.querySelector('.picture__img').src = photo.url;
     photoElement.querySelector('.picture__likes').textContent = photo.likes;
@@ -29,8 +27,8 @@ function createPictures(photosData, filterPhotos) {
     });
   }
 
-  for (let i = 0; i < photosDataFiltred.length; i++) {
-    initBigPicture(previews[i], photosDataFiltred[i]);
+  for (let i = 0; i < photosData.length; i++) {
+    initBigPicture(previews[i], photosData[i]);
   }
 }
 
