@@ -3,29 +3,27 @@ import {shuffle, debounce} from './util.js';
 
 const RENDER_DELAY = 500;
 
-function viewFilters() {
-  const filtersElement = document.querySelector('.img-filters');
-  filtersElement.classList.remove('img-filters--inactive');
-}
-
 const filterDefault = document.querySelector('#filter-default');
 const filterRandom = document.querySelector('#filter-random');
 const filterDiscussed = document.querySelector('#filter-discussed');
 
 function initFilters(pictures) {
   const defaultFilterPhotos = getDefaultFilterPhotos(pictures);
+  const randomFilterPhotos = getRandomFilterPhotos(pictures);
+  const discussedFilterPhotos = getDiscussedFilterPhotos(pictures);
+
+  const filtersElement = document.querySelector('.img-filters');
+  filtersElement.classList.remove('img-filters--inactive');
 
   filterDefault.addEventListener('click', (evt) => {
     setFilter(evt, filterDefault, defaultFilterPhotos);
   });
 
   filterRandom.addEventListener('click', (evt) => {
-    const randomFilterPhotos = getRandomFilterPhotos(pictures);
     setFilter(evt, filterRandom, randomFilterPhotos);
   });
 
   filterDiscussed.addEventListener('click', (evt) => {
-    const discussedFilterPhotos = getDiscussedFilterPhotos(pictures);
     setFilter(evt, filterDiscussed, discussedFilterPhotos);
   });
 
@@ -52,8 +50,7 @@ function getDefaultFilterPhotos(array) {
 }
 
 function getRandomFilterPhotos(array) {
-  array = array.slice();
-  return shuffle(array).slice(0, 10);
+  return shuffle(array.slice()).slice(0, 10);
 }
 
 function getDiscussedFilterPhotos(array) {
@@ -62,4 +59,4 @@ function getDiscussedFilterPhotos(array) {
     .sort((photoA, photoB) => photoB.likes - photoA.likes);
 }
 
-export {viewFilters, initFilters};
+export {initFilters};
