@@ -13,6 +13,11 @@ function createPictures(photosData) {
     photoListFragment.append(photoElement);
   });
 
+  const viewPictures = document.querySelectorAll('a.picture');
+  viewPictures.forEach((picture) => {
+    picture.remove();
+  });
+
   photosContainer.append(photoListFragment);
   const previews = photosContainer.querySelectorAll('.picture');
 
