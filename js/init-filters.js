@@ -40,7 +40,7 @@ function setFilter(evt, currentFilter, currentPictures) {
   debounce(
     () => createPictures(currentPictures),
     RENDER_DELAY,
-  );
+  )();
 }
 
 function getDefaultFilterPhotos(array) {
