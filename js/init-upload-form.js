@@ -3,12 +3,14 @@ import {isEscapeKey} from './util.js';
 const inputUploadFile = document.querySelector('#upload-file');
 const editPhotoContainer = document.querySelector('.img-upload__overlay');
 const body = document.querySelector('body');
+const uploadPicture = document.querySelector('.img-upload__preview img');
+
+const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 
 function closeEditPicture() {
   const scaleControl = editPhotoContainer.querySelector('.scale__control--value');
   const hashtagsInput = editPhotoContainer.querySelector('.text__hashtags');
   const descriptionTextarea = document.querySelector('.text__description');
-  const uploadPicture = document.querySelector('.img-upload__preview img');
   const selectButton = document.querySelector('.effects__radio');
   const sliderEffectContainer = document.querySelector('.img-upload__effect-level');
   body.classList.remove('modal-open');
@@ -38,6 +40,7 @@ function initUploadForm() {
   function changePicture() {
     inputUploadFile.addEventListener('change', () => {
       editPhotoContainer.classList.remove('hidden');
+
       body.classList.add('modal-open');
       document.addEventListener('keydown', onPopupEscKeyDown);
       buttonCloseEditPicture.addEventListener('click', () => {
@@ -45,6 +48,15 @@ function initUploadForm() {
       });
     });
   }
+
+  inputUploadFile.addEventListener('change', () => {
+    const file = inputUploadFile.files[0];
+    const fileName = file.name.toLowerCase();
+    const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+    if (matches) {
+      uploadPicture.src = URL.createObjectURL(file);
+    }
+  });
 
   changePicture();
 }
