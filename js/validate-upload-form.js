@@ -23,22 +23,41 @@ inputHashtags.addEventListener('keydown', stopPropagationKeydownEsc);
 inputComment.addEventListener('keydown', stopPropagationKeydownEsc);
 
 function isValidComment(comment) {
-  return checkStringLength(comment, MAX_COMMENT_LENGTH);
+  if (!checkStringLength(comment, MAX_COMMENT_LENGTH)) {
+    inputComment.setCustomValidity('Длина комментария не может составлять больше 140 символов;');
+    return false;
+  }
+  return true;
 }
 
 function isValidHashtag(hashtag) {
-  return hashtag[0] === '#'
-    && checkStringLength(hashtag, MAX_HASHTAG_LENGTH, MIN_HASHTAG_LENGTH)
-    && HASHTAG_VALID_REGEX.test(hashtag);
+  if (!checkStringLength(hashtag, MAX_HASHTAG_LENGTH, MIN_HASHTAG_LENGTH)) {
+    inputHashtags.setCustomValidity(`Максимальная длинна хэш-тега не должна превышать ${MAX_HASHTAG_LENGTH} символов (включая решетку)`);
+    return false;
+  }
+  if (!HASHTAG_VALID_REGEX.test(hashtag)) {
+    inputHashtags.setCustomValidity('Хэш-тег должен начинается с символа # (решётка). Хэш-тег должен состоять из букв и чисел и не может содержать пробелы, спецсимволы (#, @, $ и т. п.), символы пунктуации (тире, дефис, запятая и т. п.), эмодзи и т. д.');
+    return false;
+  }
+  return true;
 }
 
 function isValidHashtags(hashtags) {
   if (inputHashtags.value.length === 0) {
     return true;
   }
-  return hashtags.every(isValidHashtag)
-    && hashtags.length <= MAX_HASHTAGS
-    && isNotDuplicates(hashtags);
+  if (!hashtags.every(isValidHashtag)) {
+    return false;
+  }
+  if (hashtags.length > MAX_HASHTAGS) {
+    inputHashtags.setCustomValidity(`Хэш-тегов не должно быть больше чем ${MAX_HASHTAGS}`);
+    return false;
+  }
+  if (!isNotDuplicates(hashtags)) {
+    inputHashtags.setCustomValidity('Хэш-теги не должны повторяться');
+    return false;
+  }
+  return true;
 }
 
 function blockSubmitButton() {
@@ -56,7 +75,6 @@ function setUserFormSubmit(onSuccess) {
     const isValid = pristine.validate();
     const comment = inputComment.value;
     const hashtags = inputHashtags.value.toLowerCase().trim().split(' ');
-
     evt.preventDefault();
     if (isValid && isValidComment(comment) && isValidHashtags(hashtags)) {
       const formData = new FormData(evt.target);
