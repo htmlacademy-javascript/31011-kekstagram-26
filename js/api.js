@@ -1,7 +1,7 @@
-const linkData = 'https://26.javascript.pages.academy/kekstagram';
+const API_LINK = 'https://26.javascript.pages.academy/kekstagram';
 
 function getData(onSuccess) {
-  fetch(`${linkData}/data`)
+  fetch(`${API_LINK}/data`)
     .then((response) => response.json())
     .then((pictures) => {
       onSuccess(pictures);
@@ -11,7 +11,7 @@ function getData(onSuccess) {
 function sendData(onSuccess, onFail, body) {
 
   fetch(
-    linkData,
+    API_LINK,
     {
       method: 'POST',
       body: body,
