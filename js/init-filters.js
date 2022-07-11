@@ -9,7 +9,6 @@ const filterDiscussed = document.querySelector('#filter-discussed');
 
 function initFilters(pictures) {
   const defaultFilterPhotos = getDefaultFilterPhotos(pictures);
-  const randomFilterPhotos = getRandomFilterPhotos(pictures);
   const discussedFilterPhotos = getDiscussedFilterPhotos(pictures);
 
   const filtersElement = document.querySelector('.img-filters');
@@ -20,6 +19,7 @@ function initFilters(pictures) {
   });
 
   filterRandom.addEventListener('click', (evt) => {
+    const randomFilterPhotos = getRandomFilterPhotos(pictures);
     setFilter(evt, filterRandom, randomFilterPhotos);
   });
 
