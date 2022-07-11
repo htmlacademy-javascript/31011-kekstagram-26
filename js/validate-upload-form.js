@@ -25,6 +25,7 @@ inputComment.addEventListener('keydown', stopPropagationKeydownEsc);
 function isValidComment(comment) {
   if (!checkStringLength(comment, MAX_COMMENT_LENGTH)) {
     inputComment.setCustomValidity('Длина комментария не может составлять больше 140 символов;');
+    inputComment.reportValidity();
     return false;
   }
   return true;
@@ -47,14 +48,17 @@ function isValidHashtags(hashtags) {
     return true;
   }
   if (!hashtags.every(isValidHashtag)) {
+    inputHashtags.reportValidity();
     return false;
   }
   if (hashtags.length > MAX_HASHTAGS) {
     inputHashtags.setCustomValidity(`Хэш-тегов не должно быть больше чем ${MAX_HASHTAGS}`);
+    inputHashtags.reportValidity();
     return false;
   }
   if (!isNotDuplicates(hashtags)) {
     inputHashtags.setCustomValidity('Хэш-теги не должны повторяться');
+    inputHashtags.reportValidity();
     return false;
   }
   return true;
